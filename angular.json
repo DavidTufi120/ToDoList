@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/angular-project",
-            "baseHref": "/ToDoList//",
+            "baseHref": "/ToDoList/", // Corrigido: removi a barra extra
             "deployUrl": "/ToDoList/",
             "index": "src/index.html",
             "browser": "src/main.ts",
