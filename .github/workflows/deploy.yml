@@ -11,8 +11,8 @@ jobs:
         with:
           node-version: '20'
       - run: npm install
-      - run: npm run build -- --prod
+      - run: npm run build -- --configuration production
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/angular-project  # 👈 Substitua pelo nome da pasta de build (geralmente é o nome do projeto Angular)
+          publish_dir: ./dist/angular-project
