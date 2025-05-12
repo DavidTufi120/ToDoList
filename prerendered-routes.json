@@ -1,7 +1,0 @@
-{
-  "routes": {
-    "/ToDoList": {},
-    "/ToDoList/list": {},
-    "/ToDoList/login": {}
-  }
-}
