@@ -12,8 +12,8 @@ jobs:
           node-version: '20'
       - run: npm install --legacy-peer-deps
       - run: npm run build:prod
-      - run: cp dist/angular-project/index.html dist/angular-project/404.html
+      - run: cp dist/angular-project/browser/index.html dist/angular-project/browser/404.html
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/angular-project
+          publish_dir: ./dist/angular-project/browser
