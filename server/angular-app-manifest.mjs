@@ -2,29 +2,29 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: '/',
+  baseHref: '/ToDoList/',
   locale: undefined,
   routes: [
   {
     "renderMode": 2,
-    "redirectTo": "/login",
-    "route": "/"
+    "redirectTo": "/ToDoList/login",
+    "route": "/ToDoList"
   },
   {
     "renderMode": 2,
-    "route": "/login"
+    "route": "/ToDoList/login"
   },
   {
     "renderMode": 2,
-    "route": "/list"
+    "route": "/ToDoList/list"
   }
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 498, hash: '97a52d6f0f200156349b49283d2299f639b9ce329a6e09b878413656f12e1e2e', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1011, hash: 'b0b50e7c44cd30c0a8f1a512b1963d620cdffb3683ab45229e538c4d1195212d', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'list/index.html': {size: 2913, hash: '22d52686c7417c037186d535ca48b1c19a4be582ee4143a25c24bdecfd2251e6', text: () => import('./assets-chunks/list_index_html.mjs').then(m => m.default)},
-    'login/index.html': {size: 2943, hash: '0b570fd77d4aa35f96100adeca3ac3724fc0ba614706b64a2ef4d34aa9be0603', text: () => import('./assets-chunks/login_index_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 829, hash: '95130401ba651adfccca0ed6974f3c184848dbb64958090b609f73244bd6f166', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1882, hash: '5948c21be7a843aa4657ed88c2dcec54eec1599affeea953d2bbc1ed2d1e5235', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'list/index.html': {size: 3719, hash: '54542090f18a2176b5b34ab1e1ada1b751c634f503728b57e7a206d5548c61e0', text: () => import('./assets-chunks/list_index_html.mjs').then(m => m.default)},
+    'login/index.html': {size: 3749, hash: '5a3619da8b61a1d9312d402628206663763c94f06cbce5bf8f430a744a6b5b26', text: () => import('./assets-chunks/login_index_html.mjs').then(m => m.default)},
     'styles-5INURTSO.css': {size: 0, hash: 'menYUTfbRu8', text: () => import('./assets-chunks/styles-5INURTSO_css.mjs').then(m => m.default)}
   },
 };

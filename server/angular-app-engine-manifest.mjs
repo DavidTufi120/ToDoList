@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/',
+  basePath: '/ToDoList',
   supportedLocales: {
   "en-US": ""
 },
