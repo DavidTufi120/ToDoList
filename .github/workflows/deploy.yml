@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install
+      - run: npm install --legacy-peer-deps
       - run: npm run build -- --configuration production
       - run: cp dist/angular-project/index.html dist/angular-project/404.html
       - uses: peaceiris/actions-gh-pages@v3
