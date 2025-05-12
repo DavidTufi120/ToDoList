@@ -7,11 +7,11 @@ export default `<!doctype html>
   <base href="/ToDoList/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles-5INURTSO.css"></head>
+<link rel="stylesheet" href="/ToDoList/styles-5INURTSO.css"></head>
 
 <body ngcm="">
   <app-root></app-root>
-<script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-I52TBDJT.js" type="module"></script></body>
+<script src="/ToDoList/polyfills-FFHMD2TL.js" type="module"></script><script src="/ToDoList/main-I52TBDJT.js" type="module"></script></body>
 
 </html>
 <!doctype html>
