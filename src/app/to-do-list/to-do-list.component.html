@@ -1,0 +1,62 @@
+<div class="container">
+    <!-- Cabeçalho com Logout -->
+    <div class="header">
+        <h2>Lista de Tarefas</h2>
+        <div class="logout-button">
+            <button (click)="abrirConfirmacaoLogout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal" *ngIf="mostrarModalLogout">
+        <div class="modal-conteudo">
+            <p>Tem certeza que deseja sair?</p>
+            <button (click)="confirmarLogout()">Sim</button>
+            <button (click)="cancelarLogout()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Tabela de Tarefas -->
+    <div>
+        <h3>{{ editandoIndex === null ? 'Adicionar Nova Tarefa' : 'Editar Tarefa' }}</h3>
+
+        <div class="task-table">
+            <!-- Cabeçalho -->
+            <div class="table-row header">
+                <div class="table-cell">Título</div>
+                <div class="table-cell">Descrição</div>
+                <div class="table-cell actions">Ações</div>
+            </div>
+
+            <!-- Linha de Input -->
+            <div class="table-row input-row">
+                <div class="table-cell">
+                    <input [(ngModel)]="novaTarefa" placeholder="Digite o título" class="table-input" />
+                </div>
+                <div class="table-cell">
+                    <input [(ngModel)]="novaDescricao" placeholder="Digite a descrição" class="table-input" />
+                </div>
+                <div class="table-cell actions">
+                    <button (click)="verificarTarefa()" class="add-button">
+                        {{ editandoIndex === null ? 'Adicionar' : 'Salvar' }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Linhas de Tarefas -->
+            <div *ngFor="let tarefa of tarefas; let i = index" class="table-row">
+                <div class="table-cell">{{ tarefa.title }}</div>
+                <div class="table-cell">{{ tarefa.description }}</div>
+                <div class="table-cell actions">
+                    <button (click)="editar(i)" class="action-button">Editar</button>
+                    <button (click)="deletar(i)" class="action-button delete">Deletar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensagem de Erro -->
+        <div *ngIf="erro" class="erro">
+            <p>Por favor, preencha ambos os campos.</p>
+        </div>
+    </div>
+</div>
