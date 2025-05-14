@@ -99,7 +99,7 @@ export class ToDoListComponent implements OnInit {
 
       // Verificação se o id é válido antes de chamar a função de atualização
       if (tarefaEditada.id) {
-        this.taskService.updateTask(tarefaEditada.id, tarefaEditada).subscribe({
+        this.taskService.updateTask(tarefaEditada).subscribe({
           next: (data) => {
             this.tarefas[this.editandoIndex!] = data;
             this.editandoIndex = null;
