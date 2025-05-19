@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-login',
@@ -12,57 +13,28 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
-  name = '';
-  email = '';
-  password = '';
   mensagemErro = '';
   usuarioLogado = false;
   nomeUsuario = '';
 
-  private readonly usuarioBanco = {
-    email: 'admin@admin.com',
-    password: 'admin',
-    nome: 'Admin'
-  };
+  constructor(
+    public auth: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.verificarLogin();
+    this.auth.isAuthenticated$.subscribe(isAuthenticated => {
+      this.usuarioLogado = isAuthenticated;
+      if (isAuthenticated) {
+        this.auth.user$.subscribe(user => {
+          this.nomeUsuario = user?.name || '';
+          this.router.navigate(['/list']);
+        });
+      }
+    });
   }
 
   fazerLogin() {
-    const { email, password, nome } = this.usuarioBanco;
-
-    if (this.email === email && this.password === password) {
-      const usuario = { email, nome };
-      localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-      this.usuarioLogado = true;
-      this.nomeUsuario = nome;
-      this.mensagemErro = '';
-      this.router.navigate(['/list']);
-    } else {
-      this.mensagemErro = 'Login incorreto. Tente novamente.';
-      this.usuarioLogado = false;
-    }
-  }
-
-  verificarLogin() {
-    const usuarioSalvo = localStorage.getItem('usuarioLogado');
-    if (usuarioSalvo) {
-      const usuario = JSON.parse(usuarioSalvo);
-      this.usuarioLogado = true;
-      this.nomeUsuario = usuario.nome;
-    }
-  }
-
-  logout() {
-    localStorage.removeItem('usuarioLogado');
-    this.usuarioLogado = false;
-    this.nomeUsuario = '';
-    this.email = '';
-    this.password = '';
-    this.mensagemErro = '';
-    alert('Logout realizado com sucesso!');
+    this.auth.loginWithRedirect();
   }
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.services';
-import { AuthService } from '../services/auth.services';
+import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,15 +25,20 @@ export class ToDoListComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    const user = localStorage.getItem('usuarioLogado');
-    if (!user) {
-      this.router.navigate(['/login']);
-    }
+    this.authService.isAuthenticated$.subscribe(isAuthenticated => {
+      if (isAuthenticated && this.router.url !== '/list') {
+        this.authService.user$.subscribe(user => {
+          if (user) {
+            this.router.navigate(['/list']);
+          }
+        });
+      }
+    });
     this.loadTasks();
   }
 
@@ -142,13 +147,15 @@ export class ToDoListComponent implements OnInit {
   }
 
   confirmarLogout() {
-    this.authService.logout();
+    this.authService.logout({
+      logoutParams: {
+        returnTo: window.location.origin + '/ToDoList/login'
+      }
+    });
     this.mostrarModalLogout = false;
-    localStorage.removeItem('usuarioLogado');
     this.tarefas = [];
     this.novaDescricao = '';
     this.novaTarefa = '';
   }
 
 }
-
