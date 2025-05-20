@@ -1,10 +1,17 @@
-<div class="formulario-container">
-    <!-- Botão de login aparece se NÃO estiver logado -->
-    <div *ngIf="!usuarioLogado">
+<div class="login-container">
+    <form class="login-form" (ngSubmit)="fazerLogin()" #loginForm="ngForm">
         <h2>Login</h2>
-        <button (click)="fazerLogin()" class="btn btn-primary">Login com Auth0</button>
-        <div *ngIf="mensagemErro" class="text-danger mt-3">
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" [(ngModel)]="email" required />
+        </div>
+        <div class="input-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" [(ngModel)]="senha" required />
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+        <div *ngIf="mensagemErro" class="error-message">
             {{ mensagemErro }}
         </div>
-    </div>
+    </form>
 </div>

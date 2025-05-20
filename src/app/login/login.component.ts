@@ -1,40 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  imports: [FormsModule, CommonModule]
 })
-export class LoginComponent implements OnInit {
-
+export class LoginComponent {
+  email = '';
+  senha = '';
   mensagemErro = '';
-  usuarioLogado = false;
-  nomeUsuario = '';
 
-  constructor(
-    public auth: AuthService,
-    private router: Router
-  ) { }
-
-  ngOnInit() {
-    this.auth.isAuthenticated$.subscribe(isAuthenticated => {
-      this.usuarioLogado = isAuthenticated;
-      if (isAuthenticated) {
-        this.auth.user$.subscribe(user => {
-          this.nomeUsuario = user?.name || '';
-          this.router.navigate(['/list']);
-        });
-      }
-    });
-  }
+  constructor(private http: HttpClient, private router: Router) { }
 
   fazerLogin() {
-    this.auth.loginWithRedirect();
+    this.mensagemErro = '';
+    this.http.post<any>('http://localhost:8080/api/login', {
+      email: this.email,
+      password: this.senha
+    }).subscribe({
+      next: (res) => {
+        this.router.navigate(['/list']);
+      },
+      error: (err) => {
+        this.mensagemErro = 'Email ou senha inválidos!';
+      }
+    });
   }
 }

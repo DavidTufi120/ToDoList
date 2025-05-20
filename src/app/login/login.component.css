@@ -1,24 +1,81 @@
-.formulario-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fa;
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-button {
+.login-form {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
     width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
-.text-danger {
-    color: red;
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #3a99d8;
 }
 
-.text-success {
-    color: green;
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.input-group label {
+    font-size: 1rem;
+    color: #333;
+}
+
+.input-group input {
+    padding: 0.7rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.2s;
+}
+
+.input-group input:focus {
+    border: 1.5px solid #3a99d8;
+    outline: none;
+}
+
+button[type="submit"] {
+    background: #3a99d8;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:disabled {
+    background: #bcdffb;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: #d32f2f;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.register-button {
+    background: #3a99d8;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
 }
