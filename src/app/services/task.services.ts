@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Task } from '../models/task.model';
@@ -32,7 +32,7 @@ export class TaskService {
     }
 
     updateTask(task: Task): Observable<Task> {
-        return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task, { headers: this.headers }).pipe(
+        return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task).pipe(
             catchError(this.handleError)
         );
     }
