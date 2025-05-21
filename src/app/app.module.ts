@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms'; // Necessário para ngModel
 import { AppComponent } from './app.component';
 import { BotaoComponent } from './botao/botao.component';
 import { LoginComponent } from './login/login.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './token-interceptor/token.interceptor';
 
 @NgModule({
     declarations: [
@@ -13,10 +15,11 @@ import { LoginComponent } from './login/login.component';
     ],
     imports: [
         BrowserModule,
-        FormsModule,    // Necessário para usar ngModel
-        // Não precisa mais do CommonModule aqui
+        FormsModule,
     ],
-    providers: [],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,7 @@ export class LoginComponent {
   email = '';
   senha = '';
   mensagemErro = '';
+  isRegister = false;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -24,11 +25,17 @@ export class LoginComponent {
       password: this.senha
     }).subscribe({
       next: (res) => {
+        localStorage.setItem('token', res.token);
         this.router.navigate(['/list']);
       },
       error: (err) => {
         this.mensagemErro = 'Email ou senha inválidos!';
       }
     });
+  }
+
+  register() {
+    this.router.navigate(['/signup']);
+    this.isRegister = true;
   }
 }
