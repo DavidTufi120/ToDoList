@@ -10,7 +10,6 @@ import { environment } from '../../environments/environment'; // Importe o envir
 })
 export class TaskService {
     private apiUrl = `${environment.apiUrl}/api/tasks`;
-    private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     constructor(private http: HttpClient) { }
 
@@ -27,7 +26,7 @@ export class TaskService {
     }
 
     createTask(task: Task): Observable<Task> {
-        return this.http.post<Task>(this.apiUrl, task, { headers: this.headers }).pipe(
+        return this.http.post<Task>(this.apiUrl, task).pipe(
             catchError(this.handleError)
         );
     }
