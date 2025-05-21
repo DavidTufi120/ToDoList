@@ -9,12 +9,11 @@ import { environment } from '../../environments/environment'; // Importe o envir
     providedIn: 'root'
 })
 export class TaskService {
-    private apiUrl = `${environment.apiUrl}/api/tasks`; // Usando a URL do ambiente
+    private apiUrl = `${environment.apiUrl}/api/tasks`;
     private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     constructor(private http: HttpClient) { }
 
-    // Métodos simplificados com tipagem forte
     getAllTasks(): Observable<Task[]> {
         return this.http.get<Task[]>(this.apiUrl).pipe(
             catchError(this.handleError)
