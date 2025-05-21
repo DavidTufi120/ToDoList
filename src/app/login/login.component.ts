@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
 
   fazerLogin() {
     this.mensagemErro = '';
-    this.http.post<any>('http://localhost:8080/api/login', {
+    this.http.post<any>(`${environment.apiUrl}/api/login`, {
       email: this.email,
       password: this.senha
     }).subscribe({
