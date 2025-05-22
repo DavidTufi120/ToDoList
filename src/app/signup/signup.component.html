@@ -8,17 +8,23 @@
         <input type="password" id="password" name="password" [(ngModel)]="password" required
             (input)="validatePassword(password)" />
 
-        <div class="password-strength-multibar" *ngIf="password">
-            <div class="bar-segment red" [class.filled]="passwordStrengthScore > 0"></div>
-            <div class="bar-segment yellow" [class.filled]="passwordStrengthScore > 1"></div>
-            <div class="bar-segment green" [class.filled]="passwordStrengthScore > 2"></div>
-        </div>
-
-        <div class="password-strength-label" *ngIf="password">
-            <span *ngIf="passwordStrengthScore === 0">Fraca</span>
-            <span *ngIf="passwordStrengthScore === 1">Média</span>
-            <span *ngIf="passwordStrengthScore === 2">Quase forte</span>
-            <span *ngIf="passwordStrengthScore === 3">Forte</span>
+        <div class="password-strength-group" *ngIf="password">
+            <div class="password-strength-multibar">
+                <div class="bar-segment red" [class.filled]="passwordStrengthScore > 0"></div>
+                <div class="bar-segment yellow" [class.filled]="passwordStrengthScore > 1"></div>
+                <div class="bar-segment green" [class.filled]="passwordStrengthScore > 2"></div>
+                <div class="password-strength-label" [ngClass]="{
+                        'label-weak': passwordStrengthScore === 0,
+                        'label-medium': passwordStrengthScore === 1,
+                        'label-almost': passwordStrengthScore === 2,
+                        'label-strong': passwordStrengthScore === 3
+                    }">
+                    <span *ngIf="passwordStrengthScore === 0">Fraca</span>
+                    <span *ngIf="passwordStrengthScore === 1">Média</span>
+                    <span *ngIf="passwordStrengthScore === 2">Quase forte</span>
+                    <span *ngIf="passwordStrengthScore === 3">Forte</span>
+                </div>
+            </div>
         </div>
 
         <div *ngIf="password">
