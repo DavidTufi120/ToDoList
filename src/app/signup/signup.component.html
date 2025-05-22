@@ -8,19 +8,17 @@
         <input type="password" id="password" name="password" [(ngModel)]="password" required
             (input)="validatePassword(password)" />
 
-        <div class="password-strength-bar-container" *ngIf="password">
-            <div class="password-strength-bar" [ngClass]="{
-                   'weak': passwordStrength === 'fraca',
-                   'medium': passwordStrength === 'media',
-                   'strong': passwordStrength === 'forte'
-                 }">
-            </div>
+        <div class="password-strength-multibar" *ngIf="password">
+            <div class="bar-segment red" [class.filled]="passwordStrengthScore > 0"></div>
+            <div class="bar-segment yellow" [class.filled]="passwordStrengthScore > 1"></div>
+            <div class="bar-segment green" [class.filled]="passwordStrengthScore > 2"></div>
         </div>
 
         <div class="password-strength-label" *ngIf="password">
-            <span *ngIf="passwordStrength === 'fraca'">Fraca</span>
-            <span *ngIf="passwordStrength === 'media'">Média</span>
-            <span *ngIf="passwordStrength === 'forte'">Forte</span>
+            <span *ngIf="passwordStrengthScore === 0">Fraca</span>
+            <span *ngIf="passwordStrengthScore === 1">Média</span>
+            <span *ngIf="passwordStrengthScore === 2">Quase forte</span>
+            <span *ngIf="passwordStrengthScore === 3">Forte</span>
         </div>
 
         <div *ngIf="password">

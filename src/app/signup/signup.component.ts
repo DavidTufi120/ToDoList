@@ -26,6 +26,8 @@ export class SignupComponent implements OnInit {
     hasSpecial = false;
     noRepeatedNumbers = true;
 
+    passwordStrengthScore = 0;
+
     constructor(private router: Router, private http: HttpClient) { }
 
     ngOnInit(): void { }
@@ -37,6 +39,13 @@ export class SignupComponent implements OnInit {
         this.hasSpecial = /[^A-Za-z0-9]/.test(password);
         this.noRepeatedNumbers = !(/(\d)\1{1,}/.test(password));
 
+        let score = 0;
+        if (this.hasMinLength) score++;
+        if (this.hasUpper && this.hasLower) score++;
+        if (this.hasSpecial && this.noRepeatedNumbers) score++;
+
+        this.passwordStrengthScore = score;
+
         let errors = [];
         if (!this.hasMinLength) errors.push('Mínimo 8 caracteres');
         if (!this.hasUpper) errors.push('Pelo menos 1 letra maiúscula');
@@ -45,13 +54,6 @@ export class SignupComponent implements OnInit {
         if (!this.noRepeatedNumbers) errors.push('Não pode repetir números');
 
         this.passwordError = errors.join(', ');
-
-        let score = 0;
-        if (this.hasMinLength) score++;
-        if (this.hasUpper) score++;
-        if (this.hasLower) score++;
-        if (this.hasSpecial) score++;
-        if (this.noRepeatedNumbers) score++;
 
         if (score <= 2) this.passwordStrength = 'fraca';
         else if (score === 3 || score === 4) this.passwordStrength = 'media';
