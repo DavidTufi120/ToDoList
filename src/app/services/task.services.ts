@@ -43,7 +43,6 @@ export class TaskService {
         );
     }
 
-    // Tratamento de erros aprimorado
     private handleError(error: HttpErrorResponse) {
         console.error('Erro na requisição:', error);
 
@@ -53,7 +52,6 @@ export class TaskService {
         } else if (error.status) {
             errorMessage = `Erro ${error.status}: ${error.error?.message || error.message}`;
 
-            // Tratamento específico para status comuns
             switch (error.status) {
                 case 404:
                     errorMessage = 'Recurso não encontrado';

@@ -29,18 +29,10 @@ export class SignupComponent implements OnInit {
             password: this.password
         }).subscribe({
             next: (res) => {
-                if (res.existingUser) {
-                    this.existingUser = true;
-                } else {
-                    this.router.navigate(['/list']);
-                }
+                this.router.navigate(['/list']);
             },
             error: (err) => {
-                if (err.status === 409) {
-                    this.existingUser = true;
-                } else {
-                    alert('Erro ao cadastrar usuário!');
-                }
+                err.status === 409 ? this.existingUser = true : alert('Erro ao cadastrar usuário!')
             }
         });
     }
