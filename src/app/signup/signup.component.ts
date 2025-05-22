@@ -15,6 +15,7 @@ import { environment } from '../../environments/environment';
 export class SignupComponent implements OnInit {
     email: string = '';
     password: string = '';
+    existingUser: boolean = false;
 
     constructor(private router: Router, private http: HttpClient) { }
 
@@ -28,10 +29,18 @@ export class SignupComponent implements OnInit {
             password: this.password
         }).subscribe({
             next: (res) => {
-                this.router.navigate(['/list']);
+                if (res.existingUser) {
+                    this.existingUser = true;
+                } else {
+                    this.router.navigate(['/list']);
+                }
             },
             error: (err) => {
-                alert('Erro ao cadastrar usuário!');
+                if (err.status === 409) {
+                    this.existingUser = true;
+                } else {
+                    alert('Erro ao cadastrar usuário!');
+                }
             }
         });
     }

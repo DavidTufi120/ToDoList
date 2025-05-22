@@ -10,5 +10,6 @@
             <input type="password" id="password" name="password" [(ngModel)]="password" required />
         </div>
         <button type="submit" [disabled]="signupForm.invalid">Cadastrar</button>
+        <p *ngIf="existingUser" class="error-message">Usuário já existe!</p>
     </form>
 </div>
