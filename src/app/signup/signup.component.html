@@ -7,9 +7,22 @@
         </div>
         <div class="input-group">
             <label for="password">Senha</label>
-            <input type="password" id="password" name="password" [(ngModel)]="password" required />
+            <input type="password" id="password" name="password" [(ngModel)]="password" required
+                (input)="validatePassword(password)" />
         </div>
-        <button type="submit" [disabled]="signupForm.invalid">Cadastrar</button>
+        <div *ngIf="password">
+            <span [ngClass]="{
+                'weak': passwordStrength === 'Fraca',
+                'medium': passwordStrength === 'Média',
+                'strong': passwordStrength === 'Forte'
+            }">
+                Força da senha: {{ passwordStrength }}
+            </span>
+        </div>
+        <div *ngIf="passwordError" class="error-message">
+            {{ passwordError }}
+        </div>
+        <button type="submit" [disabled]="passwordStrength !== 'Forte'">Cadastrar</button>
         <p *ngIf="existingUser" class="error-message">Usuário já existe!</p>
     </form>
 </div>
