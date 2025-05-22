@@ -1,28 +1,42 @@
+<!-- signup.component.html -->
 <div class="signup-container">
-    <h2>Cadastro</h2>
-    <form (ngSubmit)="Signup()" #signupForm="ngForm">
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" [(ngModel)]="email" required />
+    <form>
+        <label for="email">Email</label>
+        <input type="email" [(ngModel)]="email" name="email" required />
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required
+            (input)="validatePassword(password)" />
+
+        <ul class="password-requirements">
+            <li [ngClass]="{'valid': hasMinLength, 'invalid': !hasMinLength}">
+                <span class="icon">{{ hasMinLength ? '✔️' : '❌' }}</span>
+                Mínimo 8 caracteres
+            </li>
+            <li [ngClass]="{'valid': hasUpper, 'invalid': !hasUpper}">
+                <span class="icon">{{ hasUpper ? '✔️' : '❌' }}</span>
+                Pelo menos 1 letra maiúscula
+            </li>
+            <li [ngClass]="{'valid': hasLower, 'invalid': !hasLower}">
+                <span class="icon">{{ hasLower ? '✔️' : '❌' }}</span>
+                Pelo menos 1 letra minúscula
+            </li>
+            <li [ngClass]="{'valid': hasSpecial, 'invalid': !hasSpecial}">
+                <span class="icon">{{ hasSpecial ? '✔️' : '❌' }}</span>
+                Pelo menos 1 caractere especial
+            </li>
+            <li [ngClass]="{'valid': noRepeatedNumbers, 'invalid': !noRepeatedNumbers}">
+                <span class="icon">{{ noRepeatedNumbers ? '✔️' : '❌' }}</span>
+                Não pode repetir números
+            </li>
+        </ul>
+
+        <div *ngIf="existingUser" class="error-message">
+            E-mail já cadastrado!
         </div>
-        <div class="input-group">
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password" [(ngModel)]="password" required
-                (input)="validatePassword(password)" />
-        </div>
-        <div *ngIf="password">
-            <span [ngClass]="{
-                'weak': passwordStrength === 'Fraca',
-                'medium': passwordStrength === 'Média',
-                'strong': passwordStrength === 'Forte'
-            }">
-                Força da senha: {{ passwordStrength }}
-            </span>
-        </div>
-        <div *ngIf="passwordError" class="error-message">
-            {{ passwordError }}
-        </div>
-        <button type="submit" [disabled]="passwordStrength !== 'Forte'">Cadastrar</button>
-        <p *ngIf="existingUser" class="error-message">Usuário já existe!</p>
+
+        <button type="submit" [disabled]="!(hasMinLength && hasUpper && hasLower && hasSpecial && noRepeatedNumbers)">
+            Cadastrar
+        </button>
     </form>
 </div>

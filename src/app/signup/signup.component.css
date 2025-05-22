@@ -13,3 +13,84 @@
 .strong {
     color: #388e3c;
 }
+
+.signup-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f7fa;
+}
+
+form {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 0.7rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    transition: border 0.2s;
+}
+
+input:focus {
+    border: 1.5px solid #3a99d8;
+    outline: none;
+}
+
+.password-requirements {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.password-requirements li {
+    display: flex;
+    align-items: center;
+    font-size: 0.98rem;
+    margin-bottom: 0.2rem;
+    gap: 0.5rem;
+}
+
+.password-requirements .icon {
+    font-size: 1.1rem;
+    width: 1.5em;
+    display: inline-block;
+    text-align: center;
+}
+
+.valid {
+    color: #388e3c;
+}
+
+.invalid {
+    color: #d32f2f;
+}
+
+button[type="submit"] {
+    background: #3a99d8;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button[type="submit"]:disabled {
+    background: #bcdffb;
+    cursor: not-allowed;
+}
