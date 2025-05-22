@@ -48,7 +48,8 @@
             E-mail já cadastrado!
         </div>
 
-        <button type="submit" [disabled]="!(hasMinLength && hasUpper && hasLower && hasSpecial && noRepeatedNumbers)">
+        <button type="submit" (click)="Signup()"
+            [disabled]="!(hasMinLength && hasUpper && hasLower && hasSpecial && noRepeatedNumbers)">
             Cadastrar
         </button>
     </form>
