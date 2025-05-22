@@ -107,8 +107,7 @@ button[type="submit"]:disabled {
     border-radius: 6px;
     overflow: hidden;
     background: #e0e0e0;
-    position: relative;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.2rem;
 }
 
 .bar-segment {
@@ -133,30 +132,31 @@ button[type="submit"]:disabled {
     border-right: 2px solid #fff;
 }
 
-.password-strength-label {
-    position: absolute;
-    top: 16px;
+.password-strength-labels {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     font-size: 0.85rem;
     font-weight: 600;
-    width: 33.33%;
-    text-align: center;
-    color: #666;
-    pointer-events: none;
-    transition: left 0.3s, color 0.3s;
+    margin-top: 2px;
+    min-height: 18px;
 }
 
 .label-weak {
-    left: 0;
     color: #d32f2f;
+    flex: 1;
+    text-align: left;
 }
 
 .label-medium {
-    left: 33.33%;
     color: #fbc02d;
+    flex: 1;
+    text-align: center;
 }
 
 .label-almost,
 .label-strong {
-    left: 66.66%;
     color: #388e3c;
+    flex: 1;
+    text-align: right;
 }

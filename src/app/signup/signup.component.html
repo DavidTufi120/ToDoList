@@ -13,30 +13,14 @@
                 <div class="bar-segment red" [class.filled]="passwordStrengthScore > 0"></div>
                 <div class="bar-segment yellow" [class.filled]="passwordStrengthScore > 1"></div>
                 <div class="bar-segment green" [class.filled]="passwordStrengthScore > 2"></div>
-                <div class="password-strength-label" [ngClass]="{
-                        'label-weak': passwordStrengthScore === 0,
-                        'label-medium': passwordStrengthScore === 1,
-                        'label-almost': passwordStrengthScore === 2,
-                        'label-strong': passwordStrengthScore === 3
-                    }">
-                    <span *ngIf="passwordStrengthScore === 0">Fraca</span>
-                    <span *ngIf="passwordStrengthScore === 1">Média</span>
-                    <span *ngIf="passwordStrengthScore === 2">Quase forte</span>
-                    <span *ngIf="passwordStrengthScore === 3">Forte</span>
-                </div>
+            </div>
+            <div class="password-strength-labels">
+                <span class="label-weak" *ngIf="passwordStrengthScore === 0">Fraca</span>
+                <span class="label-medium" *ngIf="passwordStrengthScore === 1">Média</span>
+                <span class="label-almost" *ngIf="passwordStrengthScore === 2">Quase forte</span>
+                <span class="label-strong" *ngIf="passwordStrengthScore === 3">Forte</span>
             </div>
         </div>
-
-        <div *ngIf="password">
-            <span [ngClass]="{
-                'weak': passwordStrength === 'Fraca',
-                'medium': passwordStrength === 'Média',
-                'strong': passwordStrength === 'Forte'
-            }">
-                Força da senha: {{ passwordStrength }}
-            </span>
-        </div>
-
         <ul class="password-requirements">
             <li [ngClass]="{'valid': hasMinLength, 'invalid': !hasMinLength}">
                 <span class="icon">{{ hasMinLength ? '✔️' : '❌' }}</span>
