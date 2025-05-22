@@ -53,9 +53,9 @@ export class SignupComponent implements OnInit {
         if (this.hasSpecial) score++;
         if (this.noRepeatedNumbers) score++;
 
-        if (score <= 2) this.passwordStrength = 'Fraca';
-        else if (score === 3 || score === 4) this.passwordStrength = 'Média';
-        else this.passwordStrength = 'Forte';
+        if (score <= 2) this.passwordStrength = 'fraca';
+        else if (score === 3 || score === 4) this.passwordStrength = 'media';
+        else this.passwordStrength = 'forte';
     }
 
     Signup() {

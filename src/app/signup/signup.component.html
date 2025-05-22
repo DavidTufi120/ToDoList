@@ -8,6 +8,31 @@
         <input type="password" id="password" name="password" [(ngModel)]="password" required
             (input)="validatePassword(password)" />
 
+        <div class="password-strength-bar-container" *ngIf="password">
+            <div class="password-strength-bar" [ngClass]="{
+                   'weak': passwordStrength === 'fraca',
+                   'medium': passwordStrength === 'media',
+                   'strong': passwordStrength === 'forte'
+                 }">
+            </div>
+        </div>
+
+        <div class="password-strength-label" *ngIf="password">
+            <span *ngIf="passwordStrength === 'fraca'">Fraca</span>
+            <span *ngIf="passwordStrength === 'media'">Média</span>
+            <span *ngIf="passwordStrength === 'forte'">Forte</span>
+        </div>
+
+        <div *ngIf="password">
+            <span [ngClass]="{
+                'weak': passwordStrength === 'Fraca',
+                'medium': passwordStrength === 'Média',
+                'strong': passwordStrength === 'Forte'
+            }">
+                Força da senha: {{ passwordStrength }}
+            </span>
+        </div>
+
         <ul class="password-requirements">
             <li [ngClass]="{'valid': hasMinLength, 'invalid': !hasMinLength}">
                 <span class="icon">{{ hasMinLength ? '✔️' : '❌' }}</span>

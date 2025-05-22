@@ -94,3 +94,37 @@ button[type="submit"]:disabled {
     background: #bcdffb;
     cursor: not-allowed;
 }
+
+.password-strength-bar-container {
+    width: 100%;
+    height: 10px;
+    margin: 0.5rem 0 1rem 0;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.password-strength-bar.weak {
+    background: #d32f2f;
+}
+
+.password-strength-bar.medium {
+    background: #fbc02d;
+}
+
+.password-strength-bar.strong {
+    background: #388e3c;
+}
+
+.password-strength-label {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+    text-align: right;
+}
