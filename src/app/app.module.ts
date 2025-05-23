@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BotaoComponent } from './botao/botao.component';
 import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { TokenInterceptor } from './token-interceptor/token.interceptor';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule } from '@angular/router';
@@ -28,9 +27,7 @@ import { CommonModule } from '@angular/common';
         RouterModule.forRoot(routes),
         CommonModule
     ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

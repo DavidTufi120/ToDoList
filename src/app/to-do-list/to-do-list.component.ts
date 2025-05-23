@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.services';
-import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -24,20 +23,10 @@ export class ToDoListComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    public authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.authService.isAuthenticated$.subscribe(isAuthenticated => {
-      if (isAuthenticated && this.router.url !== '/list') {
-        this.authService.user$.subscribe(user => {
-          if (user) {
-            this.router.navigate(['/list']);
-          }
-        });
-      }
-    });
     this.loadTasks();
   }
 
@@ -142,11 +131,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   confirmarLogout() {
-    this.authService.logout({
-      logoutParams: {
-        returnTo: window.location.origin + '/ToDoList/login'
-      }
-    });
     this.mostrarModalLogout = false;
     this.tarefas = [];
     this.novaDescricao = '';
