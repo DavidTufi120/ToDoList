@@ -131,8 +131,9 @@ export class ToDoListComponent implements OnInit {
   }
 
   confirmarLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
     this.mostrarModalLogout = false;
-    this.tarefas = [];
     this.novaDescricao = '';
     this.novaTarefa = '';
   }
