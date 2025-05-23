@@ -6,6 +6,7 @@ import { BotaoComponent } from './botao/botao.component';
 import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token-interceptor/token.interceptor';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { TokenInterceptor } from './token-interceptor/token.interceptor';
         FormsModule,
     ],
     providers: [
+        provideHttpClient(),
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]

@@ -46,10 +46,6 @@ export class ToDoListComponent implements OnInit {
     this.taskService.getAllTasks().subscribe({
       next: (data) => {
         this.tarefas = data;
-      },
-      error: (err) => {
-        console.error('Erro ao carregar as tarefas', err);
-        alert('Erro ao carregar tarefas: ' + err);
       }
     });
   }
@@ -67,7 +63,7 @@ export class ToDoListComponent implements OnInit {
         this.novaDescricao = ''; // Limpa o campo de descrição
       },
       error: (err) => {
-        return;
+        console.error('Erro ao adicionar a tarefa', err);
       }
     });
   }
