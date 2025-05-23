@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Necessário para ngModel
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BotaoComponent } from './botao/botao.component';
 import { LoginComponent } from './login/login.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './token-interceptor/token.interceptor';
-import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -17,9 +16,9 @@ import { provideHttpClient } from '@angular/common/http';
     imports: [
         BrowserModule,
         FormsModule,
+        HttpClientModule,
     ],
     providers: [
-        provideHttpClient(),
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
     ],
     bootstrap: [AppComponent]
