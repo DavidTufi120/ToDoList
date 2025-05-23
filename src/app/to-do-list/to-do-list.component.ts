@@ -27,7 +27,8 @@ export class ToDoListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadTasks();
+    const verifyToken = localStorage.getItem('token');
+    !verifyToken ? this.router.navigate(['/login']) : this.loadTasks();
   }
 
   loadTasks() {
