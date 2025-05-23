@@ -67,7 +67,7 @@ export class ToDoListComponent implements OnInit {
         this.novaDescricao = ''; // Limpa o campo de descrição
       },
       error: (err) => {
-        console.error('Erro ao adicionar a tarefa', err);
+        return;
       }
     });
   }
