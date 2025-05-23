@@ -6,12 +6,14 @@ import { BotaoComponent } from './botao/botao.component';
 import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './token-interceptor/token.interceptor';
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         BotaoComponent,
-        LoginComponent
+        LoginComponent,
+        ToDoListComponent
     ],
     imports: [
         BrowserModule,

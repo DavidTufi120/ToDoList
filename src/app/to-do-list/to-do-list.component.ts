@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-to-do-list',
   imports: [CommonModule, FormsModule],
-  standalone: true,
   templateUrl: './to-do-list.component.html',
   styleUrls: ['./to-do-list.component.css']
 })
