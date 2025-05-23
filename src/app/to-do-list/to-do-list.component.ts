@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.services';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-to-do-list',
-  imports: [CommonModule, FormsModule],
   templateUrl: './to-do-list.component.html',
-  styleUrls: ['./to-do-list.component.css']
+  styleUrls: ['./to-do-list.component.css'],
+  imports: [CommonModule, FormsModule]
 })
 
 export class ToDoListComponent implements OnInit {
