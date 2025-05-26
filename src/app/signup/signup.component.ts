@@ -66,7 +66,14 @@ export class SignupComponent implements OnInit {
             password: this.password
         }).subscribe({
             next: (res) => {
-                this.router.navigate(['/list']);
+                if (res.token) {
+                    localStorage.setItem('token', res.token);
+                    this.router.navigate(['/list']);
+                }
+                else {
+                    alert('Cadastro realizado com sucesso, porém não foi possível gerar o token!');
+                    this.router.navigate(['/login']);
+                }
             },
             error: (err) => {
                 err.status === 409 ? this.existingUser = true : alert('Erro ao cadastrar usuário!')
