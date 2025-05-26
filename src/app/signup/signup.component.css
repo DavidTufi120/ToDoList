@@ -160,3 +160,22 @@ button[type="submit"]:disabled {
     flex: 1;
     text-align: right;
 }
+
+.back-button {
+    background: none;
+    color: #3a99d8;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 1rem;
+    width: auto;
+    display: inline-block;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #2566a8;
+    text-decoration: underline;
+}
