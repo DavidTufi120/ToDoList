@@ -79,4 +79,5 @@ button[type="submit"]:disabled {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    height: 30px;
 }
