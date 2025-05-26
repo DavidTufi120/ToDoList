@@ -176,6 +176,7 @@ button[type="submit"]:disabled {
     box-shadow: none;
     outline: none;
     text-align: left;
+    padding: 0;
 }
 
 .back-button:hover {
