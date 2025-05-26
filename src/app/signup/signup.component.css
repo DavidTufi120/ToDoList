@@ -161,12 +161,6 @@ button[type="submit"]:disabled {
     text-align: right;
 }
 
-.back-button-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-}
-
 .back-button {
     background: none;
     color: #3a99d8;
@@ -181,6 +175,7 @@ button[type="submit"]:disabled {
     transition: color 0.2s;
     box-shadow: none;
     outline: none;
+    text-align: left;
 }
 
 .back-button:hover {
