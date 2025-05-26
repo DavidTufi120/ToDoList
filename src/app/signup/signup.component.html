@@ -1,11 +1,7 @@
 <!-- signup.component.html -->
 <div class="signup-container">
-    <div class="back-button-wrapper">
-        <button type="button" (click)="goBack()" class="back-button">
-            &lt; Login
-        </button>
-    </div>
     <form>
+        <button type="button" (click)="goBack()" class="back-button">Voltar</button>
         <label for="email">Email</label>
         <input type="email" [(ngModel)]="email" name="email" required />
 
