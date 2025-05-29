@@ -2,11 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Router, ActivatedRoute } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
 @Component({
     selector: 'app-new-password',
     templateUrl: './new-password.component.html',
-    styleUrls: ['./new-password.component.css']
+    styleUrls: ['./new-password.component.css'],
+    imports: [FormsModule, CommonModule]
 })
 export class NewPasswordComponent implements OnInit {
     token = '';
