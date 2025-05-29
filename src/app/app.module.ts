@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BotaoComponent } from './botao/botao.component';
 import { LoginComponent } from './login/login.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { CommonModule } from '@angular/common';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CommonModule } from '@angular/common';
         BotaoComponent,
         LoginComponent,
         ToDoListComponent,
-        SignupComponent
+        SignupComponent,
+        ForgotPasswordComponent
     ],
     imports: [
         BrowserModule,

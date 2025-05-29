@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+.snackbar-success,
+.snackbar-error,
+.mdc-snackbar__surface,
+.mdc-snackbar {
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+.snackbar-success {
+    background: #43a047 !important;
+    /* Verde Material */
+    color: #fff !important;
+}
+
+.snackbar-error {
+    background: #e53935 !important;
+    /* Vermelho Material */
+    color: #fff !important;
+}
+
+/* Botão de ação do snackbar */
+.mat-mdc-snack-bar-action {
+    color: #fff !important;
+    font-weight: bold;
+    border-radius: 6px !important;
+    transition: background 0.2s;
+    margin-left: 12px;
+    display: none;
+}
+
+.mat-mdc-snack-bar-action:hover {
+    background: transparent !important;
+    text-decoration: underline;
+    color: #fff !important;
+}

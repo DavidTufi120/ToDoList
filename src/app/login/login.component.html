@@ -8,11 +8,15 @@
         <div class="input-group">
             <label for="senha">Senha</label>
             <input type="password" id="senha" name="senha" [(ngModel)]="senha" required />
+            <div class="forgot-password">
+                <button type="button" (click)="forgotPassword()">Esqueceu sua senha?</button>
+            </div>
         </div>
         <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
         <div *ngIf="mensagemErro" class="error-message">
             {{ mensagemErro }}
         </div>
         <button type="button" class="register-button" (click)="register()">Cadastre-se</button>
+
     </form>
 </div>
