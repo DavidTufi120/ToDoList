@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { CommonModule } from '@angular/common';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +20,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
         LoginComponent,
         ToDoListComponent,
         SignupComponent,
-        ForgotPasswordComponent
+        ForgotPasswordComponent,
+        NewPasswordComponent
     ],
     imports: [
         BrowserModule,
