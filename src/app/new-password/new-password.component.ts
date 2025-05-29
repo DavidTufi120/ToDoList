@@ -38,7 +38,9 @@ export class NewPasswordComponent implements OnInit {
         }).subscribe({
             next: () => {
                 this.successMessage = 'Senha alterada com sucesso';
-                this.router.navigate(['/login']);
+                setTimeout(() => {
+                    this.router.navigate(['/login']);
+                }, 4000);
             },
             error: () => {
                 this.errorMessage = 'Erro ao alterar senha';
