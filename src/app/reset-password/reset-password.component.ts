@@ -11,7 +11,7 @@ import { CommonModule } from "@angular/common";
     styleUrls: ['./new-password.component.css'],
     imports: [FormsModule, CommonModule]
 })
-export class NewPasswordComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
     token = '';
     newPassword = '';
     confirmPassword = '';
