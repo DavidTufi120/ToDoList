@@ -11,5 +11,5 @@ export const routes: Routes = [
     { path: 'list', component: ToDoListComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
-    { path: 'reset-password', component: ResetPasswordComponent }
+    { path: 'reset-password', component: ResetPasswordComponent },
 ];

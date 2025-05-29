@@ -6,9 +6,9 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 
 @Component({
-    selector: 'app-new-password',
-    templateUrl: './new-password.component.html',
-    styleUrls: ['./new-password.component.css'],
+    selector: 'app-reset-password',
+    templateUrl: './reset-password.component.html',
+    styleUrls: ['./reset-password.component.css'],
     imports: [FormsModule, CommonModule]
 })
 export class ResetPasswordComponent implements OnInit {
