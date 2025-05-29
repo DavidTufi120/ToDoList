@@ -37,7 +37,9 @@ export class ForgotPasswordComponent {
                     verticalPosition: 'top',
                     panelClass: ['snackbar-success']
                 });
-                this.router.navigate(['/login']);
+                setTimeout(() => {
+                    this.router.navigate(['/login']);
+                }, 4000);
             },
             error: () => {
                 this.snackBar.openFromComponent(CustomSnackbarComponent, {
